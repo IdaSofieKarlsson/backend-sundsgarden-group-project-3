@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import studentRouter from "./src/routes/studentRoutes.js";
+import authRoutes from "./src/routes/authRoutes.js";
+import gradeRoutes from "./src/routes/gradeRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -18,13 +20,8 @@ app.use(
 );
 
 app.use("/api/students", studentRouter);
-//app.use("/api/users", userRouter);
-//app.use("/api/sessions", sessionRouter);
-/*
-app.use("/api/games", gameRouter);
-app.use("/api/users", userRouter);
-app.use("/api/sessions", sessionRouter);
-*/
+app.use("/api/auth", authRoutes);
+app.use("/api/grades", gradeRoutes);
 
 mongoose
 .connect(process.env.MONGO_URI)
