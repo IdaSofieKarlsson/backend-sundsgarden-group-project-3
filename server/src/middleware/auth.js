@@ -1,20 +1,22 @@
-//Handles JWT + role-based access (required for rubric: authentication vs authorization).
-import jwt from "jsonwebtoken";
+import admin from "../firebase.js";
 
-export function requireAuth(req, res, next) {
-  const token = req.headers.authorization?.split(" ")[1];
-  if (!token) return res.status(401).json({ error: "No token" });
+export async function requireAuth(req, res, next) {
+  const header = req.headers.authorization;
+  if (!header) return res.status(401).json({ error: "No token" });
 
+  const token = header.split(" ")[1];
   try {
-    req.user = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = await admin.auth().verifyIdToken(token);
+    req.user = decoded;
     next();
-  } catch {
-    return res.status(403).json({ error: "Invalid token" });
+  } catch (err) {
+    res.status(403).json({ error: "Invalid token" });
   }
 }
 
 export function requireAdmin(req, res, next) {
-  if (req.user.role !== "admin")
+  if (!req.user || req.user.role !== "admin") {
     return res.status(403).json({ error: "Admins only" });
+  }
   next();
 }

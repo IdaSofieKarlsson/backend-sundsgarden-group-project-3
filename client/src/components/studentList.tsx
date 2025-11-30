@@ -10,6 +10,7 @@ type Student = {
     email: string
 };
 
+
 const StudentList = () => {
 
     const [students, setStudents] = useState<Student[]>([]);
