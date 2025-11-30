@@ -1,5 +1,5 @@
 // server/scripts/setRoles.js
-import admin from "../firebase.js";
+import admin from "../src/firebase.js";
 
 async function setRoles() {
   try {

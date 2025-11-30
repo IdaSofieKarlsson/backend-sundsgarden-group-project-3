@@ -27,14 +27,50 @@ export const getStudentByID = async (req, res) => {
     }
 };
 
-export const registerStudent = async (req, res) => {
-    try {
-        const newStudent = new Student(req.body);
-        await newStudent.save();
-        res.json(newStudent);
-    } catch (error) {
-        res.status(500).json({
-            error: "Kunde inte registrera student", 
-        });
+export async function registerStudent(req, res) {
+  try {
+    const { name, email, address, city, personNumber, phoneNumber, class: className, firebaseUid } = req.body;
+
+    // Validate required fields
+    if (!firebaseUid) {
+      return res.status(400).json({ error: "firebaseUid is required" });
     }
+
+    const student = new Student({
+      name,
+      email,
+      address,
+      city,
+      personNumber,
+      phoneNumber,
+      class: className,
+      firebaseUid,
+    });
+
+    await student.save();
+    res.status(201).json(student);
+
+  } catch (err) {
+    console.error("registerStudent error:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+// NEW: Student can fetch THEIR OWN profile
+export async function getMyStudentProfile(req, res) {
+  try {
+    const firebaseUid = req.user.uid;
+
+    const student = await Student.findOne({ firebaseUid });
+
+    if (!student) {
+      return res.status(404).json({ error: "Student not found" });
+    }
+
+    res.json(student);
+
+  } catch (err) {
+    console.error("getMyStudentProfile error:", err);
+    res.status(500).json({ error: "Server error" });
+  }
 };
