@@ -13,13 +13,13 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "*", // your frontend URL
+    origin: "http://localhost:5173", // the frontend URL, Vite default
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true, // set to false if not using cookies/auth headers
   })
 );
-
+//ska det vara bara "/grades" alltså inget /api/ ? 
 app.use("/api/students", studentRouter);
 app.use("/api/auth", authRoutes);
 app.use("/api/grades", gradeRoutes);
