@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { apiFetch } from "../api/api.js";
+import { apiFetch } from "../api/api";
 
 export default function StudentGrades() {
   const [grades, setGrades] = useState([]);
