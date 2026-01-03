@@ -1,11 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+  const { user, role, loading } = useAuth();
+
+  // Redirect after login based on role
+  useEffect(() => {
+    if (loading) return;
+    if (!user) return;
+
+    if (role === "admin") {
+      navigate("/admin/students", { replace: true });
+    } else if (role === "student") {
+      navigate("/student/grades", { replace: true });
+    } else {
+      // If role hasn't been set yet (rare), keep user on login page
+      // You can also choose to show a message here if you want
+    }
+  }, [user, role, loading, navigate]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -13,8 +33,8 @@ export default function LoginPage() {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // No redirect yet – we’ll do that in the next step
-    } catch (err) {
+      // Redirect happens via the useEffect above (once role is available)
+    } catch {
       setError("Invalid email or password");
     }
   }
@@ -43,7 +63,9 @@ export default function LoginPage() {
         />
       </div>
 
-      <button type="submit">Login</button>
+      <button type="submit" disabled={loading}>
+        Login
+      </button>
 
       {error && <p style={{ color: "red" }}>{error}</p>}
     </form>

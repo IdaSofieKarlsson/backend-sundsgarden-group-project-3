@@ -45,7 +45,9 @@ export async function apiFetch<T>(
   }
 
   // ----- PERFORM THE REQUEST -----
-  const response = await fetch(url, {
+  const BASE_URL = "http://localhost:3001";
+  
+  const response = await fetch(`${BASE_URL}${url}`, {
     ...options,
     headers,
   });
