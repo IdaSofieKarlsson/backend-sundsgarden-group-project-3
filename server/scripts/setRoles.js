@@ -22,12 +22,12 @@ async function setRoles() {
     "yuki.kim@furets-gymnasie.se",
     "min.tanaka@furets-gymnasie.se",
     "julia.olsson@furets-gymnasie.se",
-    "oskar.sjöberg@furets-gymnasie.se",
+    "oskar.sjoberg@furets-gymnasie.se",
     "maja.axelsson@furets-gymnasie.se",
     "amina.mohammed@furets-gymnasie.se",
     "levi.holm@furets-gymnasie.se",
     "oskar.johannesson@furets-gymnasie.se",
-    "ebba.björk@furets-gymnasie.se",
+    "ebba.bjork@furets-gymnasie.se",
     "julia.holm@furets-gymnasie.se",
     "wei.li@furets-gymnasie.se",
     "yuki.li@furets-gymnasie.se",
@@ -35,9 +35,9 @@ async function setRoles() {
     "sara.berg@furets-gymnasie.se",
     "liya.ndlovu@furets-gymnasie.se",
     "hana.zhou@furets-gymnasie.se",
-    "klara.björk@furets-gymnasie.se",
-    "anna.sjöberg@furets-gymnasie.se",
-    "emil.sjöberg@furets-gymnasie.se"
+    "klara.bjork@furets-gymnasie.se",
+    "anna.sjoberg@furets-gymnasie.se",
+    "emil.sjoberg@furets-gymnasie.se"
     // ... add all student emails here
   ];
 
