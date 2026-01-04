@@ -1,5 +1,5 @@
 import request from "supertest";
-import app from "../server";
+import { app } from "../../app.js";
 
 describe("Grades API", () => {
   it("rejects unauthenticated users", async () => {

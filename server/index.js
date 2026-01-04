@@ -1,3 +1,17 @@
+import { app } from "./app.js";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+
+
+/*
 import admin from "./src/firebase.js"; // MUST be loaded before routes
 import express from "express";
 import mongoose from "mongoose";
@@ -33,3 +47,4 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+*/
