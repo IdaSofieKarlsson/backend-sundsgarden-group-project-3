@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { apiFetch } from "../api/api";
+import EditStudentModal from "./EditStudentModal";
 
 type Student = {
   _id: string;
@@ -21,6 +22,7 @@ type ImportResult = {
 const StudentList = () => {
   const [students, setStudents] = useState<Student[]>([]);
   const [importMsg, setImportMsg] = useState<string>("");
+  const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
 
   const loadStudents = async () => {
     const data = await apiFetch<Student[]>("/api/students");
@@ -95,7 +97,7 @@ const StudentList = () => {
         </thead>
         <tbody>
           {students.map((student) => (
-            <tr key={student._id}>
+            <tr key={student._id} onClick={() => setSelectedStudent(student)} style={{ cursor: "pointer" }}>
               <td>{student.name}</td>
               <td>{student.email}</td>
               <td>{student.personNumber}</td>
@@ -106,6 +108,13 @@ const StudentList = () => {
           ))}
         </tbody>
       </table>
+      {selectedStudent && (
+        <EditStudentModal
+          student={selectedStudent}
+          onClose={() => setSelectedStudent(null)}
+          onSaved={loadStudents}
+        />
+      )}
     </div>
   );
 };

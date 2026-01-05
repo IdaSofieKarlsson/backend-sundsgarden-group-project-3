@@ -7,7 +7,8 @@ import {
     registerStudent,
     getStudentByID, 
     getMyStudentProfile, 
-    importStudentsCsv
+    importStudentsCsv,
+    updateStudent
 } from "../controllers/studentController.js";
 
 const router = express.Router();
@@ -17,6 +18,7 @@ const router = express.Router();
 router.get("/:id", requireAuth, requireAdmin, getStudentByID);
 router.post("/", requireAuth, requireAdmin, registerStudent);
 router.get("/", requireAuth, requireAdmin, getAllStudents);
+router.patch("/:id", requireAuth, requireAdmin, updateStudent);
 
 router.post(
   "/import-csv",
