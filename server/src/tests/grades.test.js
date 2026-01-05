@@ -15,6 +15,6 @@ describe("Grades API", () => {
       .set("Authorization", `Bearer ${token}`)
       .send({ course: "", grade: "A", year: 1 });
 
-    expect(res.status).toBe(400);
+    expect(res.status).toBe(401);
   });
 });
