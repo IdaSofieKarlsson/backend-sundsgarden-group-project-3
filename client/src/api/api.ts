@@ -16,9 +16,12 @@ export async function apiFetch<T>(
   // ----- FIXED HEADER NORMALIZATION -----
   const existing = options.headers;
 
-  let headers: Record<string, string> = {
-    "Content-Type": "application/json",
-  };
+ const isFormData = options.body instanceof FormData;
+
+let headers: Record<string, string> = isFormData
+  ? {}
+  : { "Content-Type": "application/json" };
+
 
   if (existing) {
     // Case 1: Headers object
