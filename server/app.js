@@ -1,3 +1,4 @@
+import admin from "./src/firebase.js"; // MUST be loaded before routes
 import express from "express";
 import cors from "cors";
 
