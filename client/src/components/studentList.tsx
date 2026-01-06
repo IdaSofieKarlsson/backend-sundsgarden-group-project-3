@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { apiFetch } from "../api/api";
 import EditStudentModal from "./EditStudentModal";
 
@@ -23,6 +24,8 @@ const StudentList = () => {
   const [students, setStudents] = useState<Student[]>([]);
   const [importMsg, setImportMsg] = useState<string>("");
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
+
+  const navigate = useNavigate();
 
   const loadStudents = async () => {
     const data = await apiFetch<Student[]>("/api/students");
@@ -75,6 +78,20 @@ const StudentList = () => {
   return (
     <div>
       <h2>Addresses</h2>
+
+      <button
+        onClick={() => navigate("/admin")}
+        style={{
+          marginBottom: 12,
+          padding: "8px 10px",
+          borderRadius: 6,
+          border: "1px solid #aaa",
+          background: "#e6e6e6",
+          cursor: "pointer",
+        }}
+      >
+        Tillbaka
+      </button>
 
       <div style={{ marginBottom: 12 }}>
         <label>
