@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage";
 import AdminHome from "./pages/AdminHome";
 import StudentGrades from "./pages/StudentGrades";
 import StudentList from "./components/studentList";
+import AdminGrades from "./pages/AdminGrades";
 import { ProtectedRoute, AdminRoute } from "./components/ProtectedRoute";
 
 function App() {
@@ -30,15 +31,11 @@ function App() {
             </AdminRoute>
           }
         />
-
-        {/* Placeholder for next step: admin grade registration UI */}
         <Route
           path="/admin/grades"
           element={
             <AdminRoute>
-              <div style={{ maxWidth: 700, margin: "24px auto", padding: 16 }}>
-                Registrera Betyg
-              </div>
+              <AdminGrades />
             </AdminRoute>
           }
         />
