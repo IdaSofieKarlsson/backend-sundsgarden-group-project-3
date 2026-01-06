@@ -1,9 +1,8 @@
-// src/App.tsx
 import { Routes, Route } from "react-router-dom";
-import LoginPage from "./pages/LoginPage";
-import StudentGrades from "./pages/StudentGrades";
 import Header from "./components/Header";
-import StudentForm from "./components/studentForm";
+import LoginPage from "./pages/LoginPage";
+import AdminHome from "./pages/AdminHome";
+import StudentGrades from "./pages/StudentGrades";
 import StudentList from "./components/studentList";
 import { ProtectedRoute, AdminRoute } from "./components/ProtectedRoute";
 
@@ -12,9 +11,17 @@ function App() {
     <div>
       <Header />
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<LoginPage />} />
 
         {/* Admin pages */}
+        <Route
+          path="/admin"
+          element={
+            <AdminRoute>
+              <AdminHome />
+            </AdminRoute>
+          }
+        />
         <Route
           path="/admin/students"
           element={
@@ -23,16 +30,20 @@ function App() {
             </AdminRoute>
           }
         />
+
+        {/* Placeholder for next step: admin grade registration UI */}
         <Route
-          path="/admin/register-student"
+          path="/admin/grades"
           element={
             <AdminRoute>
-              <StudentForm />
+              <div style={{ maxWidth: 700, margin: "24px auto", padding: 16 }}>
+                Registrera Betyg
+              </div>
             </AdminRoute>
           }
         />
 
-        {/* Student page (grades etc, can be implemented later) */}
+        {/* Student page */}
         <Route
           path="/student/grades"
           element={
@@ -42,8 +53,8 @@ function App() {
           }
         />
 
-        {/* Optional: No access page */}
-        <Route path="/no-access" element={<div>No access</div>} />
+        {/* No access page */}
+        <Route path="/no-access" element={<div>Du saknar access. Kontakta Webmaster</div>} />
       </Routes>
     </div>
   );

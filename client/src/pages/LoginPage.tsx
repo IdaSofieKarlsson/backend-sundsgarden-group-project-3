@@ -18,7 +18,7 @@ export default function LoginPage() {
     if (!user) return;
 
     if (role === "admin") {
-      navigate("/admin/students", { replace: true });
+      navigate("/admin", { replace: true });
     } else if (role === "student") {
       navigate("/student/grades", { replace: true });
     } else {
@@ -40,34 +40,68 @@ export default function LoginPage() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
+    <div style={pageStyle}>
+      <form onSubmit={handleSubmit} style={cardStyle}>
+        <h2 style={{ marginTop: 0 }}>Välkommen till Furets Gymnasie</h2>
 
-      <div>
-        <label>Email</label>
+        <label>Din epost-adress</label>
         <input
+          style={inputStyle}
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-      </div>
 
-      <div>
-        <label>Password</label>
+        <label style={{ marginTop: 12 }}>Ditt lösenord</label>
         <input
+          style={inputStyle}
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-      </div>
 
-      <button type="submit" disabled={loading}>
-        Login
-      </button>
+        <button style={buttonStyle} type="submit" disabled={loading}>
+          Login
+        </button>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
-    </form>
+        {error && <p style={{ color: "#b00020" }}>{error}</p>}
+      </form>
+    </div>
   );
 }
+
+const pageStyle: React.CSSProperties = {
+  minHeight: "100vh",
+  display: "grid",
+  placeItems: "center",
+  background: "#f2f2f2",
+};
+
+const cardStyle: React.CSSProperties = {
+  width: 360,
+  background: "#fff",
+  padding: 20,
+  border: "1px solid #ddd",
+  borderRadius: 8,
+};
+
+const inputStyle: React.CSSProperties = {
+  width: "100%",
+  padding: 10,
+  marginTop: 6,
+  border: "1px solid #bbb",
+  borderRadius: 6,
+};
+
+const buttonStyle: React.CSSProperties = {
+  width: "100%",
+  marginTop: 16,
+  padding: 10,
+  background: "#666",
+  color: "#fff",
+  border: "none",
+  borderRadius: 6,
+  cursor: "pointer",
+};
