@@ -42,9 +42,9 @@ export default function LoginPage() {
   return (
     <div style={pageStyle}>
       <form onSubmit={handleSubmit} style={cardStyle}>
-        <h2 style={{ marginTop: 0 }}>Välkommen till Furets Gymnasie</h2>
+        <h2 style={{ marginTop: 0, textAlign: "center" }}>Välkommen till Furets Gymnasie</h2>
 
-        <label>Din epost-adress</label>
+        <label style={labelStyle}>Din epost-adress</label>
         <input
           style={inputStyle}
           type="email"
@@ -53,7 +53,7 @@ export default function LoginPage() {
           required
         />
 
-        <label style={{ marginTop: 12 }}>Ditt lösenord</label>
+        <label style={labelStyle}>Ditt lösenord</label>
         <input
           style={inputStyle}
           type="password"
@@ -72,6 +72,13 @@ export default function LoginPage() {
   );
 }
 
+const labelStyle: React.CSSProperties = {
+  display: "block",
+  marginTop: 12,
+  marginBottom: 6,
+  fontWeight: 600,
+};
+
 const pageStyle: React.CSSProperties = {
   minHeight: "100vh",
   display: "grid",
@@ -89,10 +96,11 @@ const cardStyle: React.CSSProperties = {
 
 const inputStyle: React.CSSProperties = {
   width: "100%",
-  padding: 10,
-  marginTop: 6,
-  border: "1px solid #bbb",
+  boxSizing: "border-box",
+  padding: 12,
   borderRadius: 6,
+  border: "1px solid #aaa",
+  background: "#f2f2f2",
 };
 
 const buttonStyle: React.CSSProperties = {

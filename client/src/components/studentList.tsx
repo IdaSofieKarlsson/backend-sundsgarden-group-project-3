@@ -76,55 +76,53 @@ const StudentList = () => {
   };
 
   return (
-    <div>
-      <h2>Addresses</h2>
+    <div style={page}>
+    <div style={panel}>
+      <div style={topRow}>
+        <h2 style={{ margin: 0 }}>Admin Student Accounts</h2>
 
-      <button
-        onClick={() => navigate("/admin")}
-        style={{
-          marginBottom: 12,
-          padding: "8px 10px",
-          borderRadius: 6,
-          border: "1px solid #aaa",
-          background: "#e6e6e6",
-          cursor: "pointer",
-        }}
-      >
-        Tillbaka
-      </button>
-
-      <div style={{ marginBottom: 12 }}>
-        <label>
-          Import CSV:{" "}
-          <input type="file" accept=".csv" onChange={handleImportCsv} />
-        </label>
-        {importMsg && <p>{importMsg}</p>}
+        <button style={btnSecondary} onClick={() => navigate("/admin")}>
+          Tillbaka
+        </button>
       </div>
 
-      <table>
+      <div style={{ marginTop: 12, marginBottom: 12 }}>
+        <label style={{ display: "block", fontWeight: 600, marginBottom: 6 }}>
+          Import CSV
+        </label>
+        <input type="file" accept=".csv" onChange={handleImportCsv} />
+        {importMsg && <p style={{ marginTop: 8 }}>{importMsg}</p>}
+      </div>
+
+      <table style={table}>
         <thead>
           <tr>
-            <th>Student</th>
-            <th>E-post</th>
-            <th>Person-nr</th>
-            <th>Telefon-nr</th>
-            <th>Gatuadress</th>
-            <th>Postnummer, Postort</th>
+            <th style={th}>Student</th>
+            <th style={th}>Email</th>
+            <th style={th}>Personnr</th>
+            <th style={th}>Tel.</th>
+            <th style={th}>Address</th>
+            <th style={th}>City</th>
           </tr>
         </thead>
         <tbody>
           {students.map((student) => (
-            <tr key={student._id} onClick={() => setSelectedStudent(student)} style={{ cursor: "pointer" }}>
-              <td>{student.name}</td>
-              <td>{student.email}</td>
-              <td>{student.personNumber}</td>
-              <td>{student.phoneNumber}</td>
-              <td>{student.address}</td>
-              <td>{student.city ?? ""}</td>
+            <tr
+              key={student._id}
+              onClick={() => setSelectedStudent(student)}
+              style={trClickable}
+            >
+              <td style={td}>{student.name}</td>
+              <td style={td}>{student.email}</td>
+              <td style={td}>{student.personNumber}</td>
+              <td style={td}>{student.phoneNumber}</td>
+              <td style={td}>{student.address}</td>
+              <td style={td}>{student.city ?? ""}</td>
             </tr>
           ))}
         </tbody>
       </table>
+
       {selectedStudent && (
         <EditStudentModal
           student={selectedStudent}
@@ -133,7 +131,62 @@ const StudentList = () => {
         />
       )}
     </div>
+  </div>
   );
+};
+
+const page: React.CSSProperties = {
+  minHeight: "calc(100vh - 52px)",
+  display: "grid",
+  placeItems: "center",
+  padding: 16,
+};
+
+const panel: React.CSSProperties = {
+  width: "100%",
+  maxWidth: 1100,
+  background: "#fff",
+  border: "1px solid #ddd",
+  borderRadius: 8,
+  padding: 16,
+};
+
+const topRow: React.CSSProperties = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  gap: 12,
+};
+
+const btnSecondary: React.CSSProperties = {
+  padding: "8px 10px",
+  borderRadius: 6,
+  border: "1px solid #aaa",
+  background: "#e6e6e6",
+  cursor: "pointer",
+};
+
+const table: React.CSSProperties = {
+  width: "100%",
+  borderCollapse: "collapse",
+  background: "#f7f7f7",
+  border: "1px solid #ccc",
+};
+
+const th: React.CSSProperties = {
+  textAlign: "left",
+  padding: 10,
+  borderBottom: "1px solid #ccc",
+  background: "#e0e0e0",
+};
+
+const td: React.CSSProperties = {
+  padding: 10,
+  borderBottom: "1px solid #ddd",
+};
+
+const trClickable: React.CSSProperties = {
+  cursor: "pointer",
 };
 
 export default StudentList;

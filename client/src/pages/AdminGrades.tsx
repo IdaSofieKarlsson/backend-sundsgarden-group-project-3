@@ -191,7 +191,7 @@ export default function AdminGrades() {
             />
           </div>
 
-          <div style={{ display: "flex", alignItems: "end" }}>
+          <div style={{ display: "flex", alignItems: "flex-end" }}>
             <button style={btnPrimary} onClick={handleSave}>
               Save grade
             </button>
@@ -252,7 +252,9 @@ const label: React.CSSProperties = {
 
 const input: React.CSSProperties = {
   width: "100%",
-  padding: 10,
+  boxSizing: "border-box",
+  height: 44,
+  padding: "0 10px",
   borderRadius: 6,
   border: "1px solid #aaa",
   background: "#f2f2f2",
@@ -260,7 +262,9 @@ const input: React.CSSProperties = {
 
 const select: React.CSSProperties = {
   width: "100%",
-  padding: 10,
+  boxSizing: "border-box",
+  height: 44,
+  padding: "0 10px",
   borderRadius: 6,
   border: "1px solid #aaa",
   background: "#f2f2f2",
@@ -268,7 +272,9 @@ const select: React.CSSProperties = {
 
 const btnPrimary: React.CSSProperties = {
   width: "100%",
-  padding: 10,
+  boxSizing: "border-box",
+  height: 44,
+  padding: "0 10px",
   borderRadius: 6,
   border: "1px solid #666",
   background: "#777",

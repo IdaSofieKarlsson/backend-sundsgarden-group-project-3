@@ -44,7 +44,8 @@ export default function Header() {
   if (!user) return null;
 
   return (
-    <header style={headerStyle}>
+  <header style={headerOuter}>
+    <div style={headerInner}>
       <div style={{ fontWeight: 700 }}>
         {role === "admin" ? "Admin" : "Grades"}
       </div>
@@ -55,10 +56,25 @@ export default function Header() {
           Logout
         </button>
       </div>
-    </header>
-  );
+    </div>
+  </header>
+);
 }
 
+const headerOuter: React.CSSProperties = {
+  //background: "#d9d9d9",
+  borderBottom: "1px solid #bdbdbd",
+};
+
+const headerInner: React.CSSProperties = {
+  maxWidth: 1100,
+  margin: "0 auto",
+  padding: "10px 16px",
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+};
+/*
 const headerStyle: React.CSSProperties = {
   display: "flex",
   justifyContent: "space-between",
@@ -67,7 +83,7 @@ const headerStyle: React.CSSProperties = {
   background: "#d9d9d9",
   borderBottom: "1px solid #bdbdbd",
 };
-
+*/
 const logoutBtn: React.CSSProperties = {
   padding: "6px 10px",
   background: "#777",
