@@ -4,15 +4,18 @@ import upload from "../middleware/uploadCsv.js";
 
 import {
     getAllStudents,
-    registerStudent,
-    getStudentByID, 
     getMyStudentProfile, 
+    registerStudent,
+    updateStudent,
     importStudentsCsv,
-    updateStudent
+    getStudentByID 
 } from "../controllers/studentController.js";
 
 const router = express.Router();
 // Define routes here
+
+// STUDENT PROFILE (LOGGED-IN USER)
+router.get("/me", requireAuth, getMyStudentProfile);
 
 // ADMIN ONLY
 router.get("/:id", requireAuth, requireAdmin, getStudentByID);
@@ -28,7 +31,6 @@ router.post(
   importStudentsCsv
 );
 
-// STUDENT PROFILE (LOGGED-IN USER)
-router.get("/me", requireAuth, getMyStudentProfile);
+
 
 export default router;
