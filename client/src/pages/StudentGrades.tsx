@@ -115,21 +115,21 @@ export default function StudentGrades() {
 
   return (
     <div style={wrap}>
-      <h2 style={{ marginTop: 0 }}>Grades</h2>
+      <h2 style={{ marginTop: 0 }}>Översikt Betyg</h2>
 
       <div style={controls}>
         <div style={btnRow}>
           <button style={btn(year === "all")} onClick={() => setYear("all")}>
-            All
+            Alla
           </button>
           <button style={btn(year === 1)} onClick={() => setYear(1)}>
-            Year 1
+            Läsår 1
           </button>
           <button style={btn(year === 2)} onClick={() => setYear(2)}>
-            Year 2
+            Läsår 2
           </button>
           <button style={btn(year === 3)} onClick={() => setYear(3)}>
-            Year 3
+            Läsår 3
           </button>
         </div>
 
@@ -154,9 +154,9 @@ export default function StudentGrades() {
       <table style={table}>
         <thead>
           <tr>
-            <th style={th}>Course</th>
-            <th style={th}>Grade</th>
-            <th style={th}>Date</th>
+            <th style={th}>Kurs</th>
+            <th style={th}>Betyg</th>
+            <th style={th}>Datum</th>
           </tr>
         </thead>
         <tbody>
@@ -231,61 +231,3 @@ const td: React.CSSProperties = {
   padding: 10,
   borderBottom: "1px solid #ddd",
 };
-
-
-/*
-import { useEffect, useState } from "react";
-import { apiFetch } from "../api/api";
-
-type Grade = {
-  _id: string;
-  course: string;
-  grade: string;
-  year: number;
-};
-
-export default function StudentGrades() {
-  const [grades, setGrades] = useState<Grade[]>([]);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    const load = async () => {
-      try {
-        const data = await apiFetch<Grade[]>("/api/grades/me");
-        setGrades(data);
-      } catch (err: unknown) {
-        setError(err instanceof Error ? err.message : "Failed to load grades");
-      }
-    };
-
-    load();
-  }, []);
-
-  return (
-    <div>
-      <h2>My Grades</h2>
-
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
-      <table>
-        <thead>
-          <tr>
-            <th>Course</th>
-            <th>Grade</th>
-            <th>Year</th>
-          </tr>
-        </thead>
-        <tbody>
-          {grades.map((g) => (
-            <tr key={g._id}>
-              <td>{g.course}</td>
-              <td>{g.grade}</td>
-              <td>{g.year}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-*/

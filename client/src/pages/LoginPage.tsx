@@ -23,7 +23,7 @@ export default function LoginPage() {
       navigate("/student/grades", { replace: true });
     } else {
       // If role hasn't been set yet (rare), keep user on login page
-      // You can also choose to show a message here if you want
+      // A message can be shown here if desired
     }
   }, [user, role, loading, navigate]);
 
@@ -63,7 +63,7 @@ export default function LoginPage() {
         />
 
         <button style={buttonStyle} type="submit" disabled={loading}>
-          Login
+          Logga In
         </button>
 
         {error && <p style={{ color: "#b00020" }}>{error}</p>}

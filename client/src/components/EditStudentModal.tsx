@@ -84,16 +84,7 @@ const modalStyle: React.CSSProperties = {
   borderRadius: 8,
   padding: 16,
 };
-/*
-const inputStyle: React.CSSProperties = {
-  width: "100%",
-  padding: 10,
-  borderRadius: 6,
-  border: "1px solid #aaa",
-  background: "#f2f2f2",
-  marginBottom: 10,
-};
-*/
+
 const labelStyle: React.CSSProperties = {
   display: "block",
   fontWeight: 600,

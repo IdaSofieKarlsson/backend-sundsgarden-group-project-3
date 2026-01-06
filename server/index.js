@@ -15,28 +15,3 @@ mongoose
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-/*
-import cors from "cors";
-import express from "express";
-import studentRouter from "./src/routes/studentRoutes.js";
-import authRoutes from "./src/routes/authRoutes.js";
-import gradeRoutes from "./src/routes/gradeRoutes.js";
-
-const app = express();
-app.use(express.json());
-
-app.use(
-  cors({
-    origin: "http://localhost:5173", // the frontend URL, Vite default
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true, // set to false if not using cookies/auth headers
-  })
-);
-//ska det vara bara "/grades" alltså inget /api/ ? 
-app.use("/api/students", studentRouter);
-app.use("/api/auth", authRoutes);
-app.use("/api/grades", gradeRoutes);
-
-
-*/

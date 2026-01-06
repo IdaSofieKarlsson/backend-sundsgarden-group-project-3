@@ -11,7 +11,7 @@ export default function AdminStudents() {
       <table>
         <thead>
           <tr>
-            <th>Name</th><th>Email</th><th>Personnr</th><th>Phone</th><th>Address</th>
+            <th>Namn</th><th>Epost</th><th>Personnummer</th><th>Telefonnummer</th><th>Address</th>
           </tr>
         </thead>
         <tbody>

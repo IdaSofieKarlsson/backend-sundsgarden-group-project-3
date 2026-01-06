@@ -79,7 +79,7 @@ const StudentList = () => {
     <div style={page}>
     <div style={panel}>
       <div style={topRow}>
-        <h2 style={{ margin: 0 }}>Admin Student Accounts</h2>
+        <h2 style={{ margin: 0 }}>Översikt Studenter</h2>
 
         <button style={btnSecondary} onClick={() => navigate("/admin")}>
           Tillbaka
@@ -88,7 +88,7 @@ const StudentList = () => {
 
       <div style={{ marginTop: 12, marginBottom: 12 }}>
         <label style={{ display: "block", fontWeight: 600, marginBottom: 6 }}>
-          Import CSV
+          Importera CSV-fil
         </label>
         <input type="file" accept=".csv" onChange={handleImportCsv} />
         {importMsg && <p style={{ marginTop: 8 }}>{importMsg}</p>}
@@ -98,11 +98,11 @@ const StudentList = () => {
         <thead>
           <tr>
             <th style={th}>Student</th>
-            <th style={th}>Email</th>
-            <th style={th}>Personnr</th>
-            <th style={th}>Tel.</th>
+            <th style={th}>Epost</th>
+            <th style={th}>Personnummer</th>
+            <th style={th}>Telefonnummer</th>
             <th style={th}>Address</th>
-            <th style={th}>City</th>
+            <th style={th}>Postnummer, Postort</th>
           </tr>
         </thead>
         <tbody>
@@ -190,74 +190,3 @@ const trClickable: React.CSSProperties = {
 };
 
 export default StudentList;
-
-
-
-
-
-/*
-import { useState, useEffect } from "react";
-import axios from "axios";
-
-type Student = {
-    _id: string,
-    name: string,
-    address: string,
-    personNumber: string,
-    phoneNumber: string,
-    email: string
-};
-
-
-const StudentList = () => {
-
-    const [students, setStudents] = useState<Student[]>([]);
-
-    const fetchStudents = async () => {
-        try {
-            const respons = await axios.get("http://localhost:3001/api/students");
-            setStudents(respons.data);
-        } catch (err) {
-            console.error("Failed to fetch students: ", err);
-            
-        }
-    };
-    /* not needed?
-    const deleteStudent = async (id: string) => {
-        try {
-            await axios.delete(`http://localhost:5000/students/${id}`);
-        } catch (err) {
-            console.error("Failed to delete student: ", err);
-            
-        }
-    };*/
-/*
-    useEffect(() => {
-        fetchStudents();
-    },[]);
-
-    return (
-        <div>
-            <h2>Addresses</h2>
-            <table>
-                <thead>
-                    <tr><th>Student</th><th>Email</th><th>Personnr</th><th>Tel.</th><th>Adress</th></tr>
-                </thead>
-                <tbody>
-                    {students.map((student) => (
-                    <tr key={student._id} >
-                        <td>{student.name}</td>
-                        <td>{student.email}</td>
-                        <td>{student.personNumber}</td>
-                        <td>{student.phoneNumber}</td>
-                        <td>{student.address}</td>
-                    </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
-
-};
-
-export default StudentList; */

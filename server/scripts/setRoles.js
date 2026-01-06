@@ -3,9 +3,7 @@ import admin from "../src/firebase.js";
 
 async function setRoles() {
   try {
-    // -----------------------------------------
     // 1. Set ADMIN ROLE for Astrid Wallin
-    // -----------------------------------------
     const adminEmail = "astrid.wallin@furets-gymnasie.se";
 
     const adminUser = await admin.auth().getUserByEmail(adminEmail);
@@ -13,10 +11,13 @@ async function setRoles() {
 
     console.log(`Admin role set for: ${adminEmail}`);
 
-
-    // -----------------------------------------
     // 2. Set STUDENT ROLE for all Class-5 users
-    // -----------------------------------------
+    /* How to add more students: 
+    A: This script ONLY works if the users already exist in Firebase. So add them there first
+    B: Add the emails to this list
+    C: re-run script to set roles. cd into server, type "node scripts/setRoles.js" 
+    Note: it's NOT a problem that you re-set the roles then for the emails already here (I've tried)*/
+
     const studentEmails = [
     "oskar.nilsson@furets-gymnasie.se",
     "yuki.kim@furets-gymnasie.se",

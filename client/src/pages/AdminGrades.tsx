@@ -115,7 +115,7 @@ export default function AdminGrades() {
     <div style={page}>
       <div style={panel}>
         <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
-          <h2 style={{ margin: 0 }}>Register Grades</h2>
+          <h2 style={{ margin: 0 }}>Registrera Betyg</h2>
 
           <button style={btnSecondary} onClick={() => navigate("/admin")}>
             Tillbaka
@@ -139,20 +139,20 @@ export default function AdminGrades() {
           </div>
 
           <div>
-            <label style={label}>Year</label>
+            <label style={label}>Läsår</label>
             <select
               style={select}
               value={year}
               onChange={(e) => setYear(Number(e.target.value) as 1 | 2 | 3)}
             >
-              <option value={1}>Year 1</option>
-              <option value={2}>Year 2</option>
-              <option value={3}>Year 3</option>
+              <option value={1}>Läsår 1</option>
+              <option value={2}>Läsår 2</option>
+              <option value={3}>Läsår 3</option>
             </select>
           </div>
 
           <div>
-            <label style={label}>Course</label>
+            <label style={label}>Kurs</label>
             <select
               style={select}
               value={course}
@@ -167,7 +167,7 @@ export default function AdminGrades() {
           </div>
 
           <div>
-            <label style={label}>Grade</label>
+            <label style={label}>Betyg</label>
             <select
               style={select}
               value={grade}
@@ -182,7 +182,7 @@ export default function AdminGrades() {
           </div>
 
           <div>
-            <label style={label}>Date (YYYY-MM-DD)</label>
+            <label style={label}>Datum (ÅÅÅÅ-MM-DD)</label>
             <input
               style={input}
               value={gradedAt}
@@ -193,7 +193,7 @@ export default function AdminGrades() {
 
           <div style={{ display: "flex", alignItems: "flex-end" }}>
             <button style={btnPrimary} onClick={handleSave}>
-              Save grade
+              Spara Betyg
             </button>
           </div>
         </div>

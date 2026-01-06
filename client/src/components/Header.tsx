@@ -53,7 +53,7 @@ export default function Header() {
       <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
         <div>{displayName || "User"}</div>
         <button style={logoutBtn} onClick={handleLogout}>
-          Logout
+          Logga ut
         </button>
       </div>
     </div>
